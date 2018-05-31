@@ -13,11 +13,11 @@ pipeline {
     stages {
         stage ('Checkout'){
             steps {
-            //checkout scm
-	    git (
-                    url: 'https://github.com/SMTBDevOpsEngine/GITDemo.git',
-                    credentialsId: 'eb2e9c94-b0dd-4687-93e2-610d91a13dc9'
-			)
+            checkout scm
+	   // git (
+             //       url: 'https://github.com/SMTBDevOpsEngine/GITDemo.git',
+               //     credentialsId: 'eb2e9c94-b0dd-4687-93e2-610d91a13dc9'
+		//	)
             }
    	    }
         stage('Build') {
