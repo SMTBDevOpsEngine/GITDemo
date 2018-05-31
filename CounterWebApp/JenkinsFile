@@ -19,9 +19,9 @@ pipeline {
    	    }
         stage('Build') {
             steps {
-	       sh "echo ${params.EmailRecipient}"
-	       sh "echo ${params.region}"    
-               sh 'mvn clean package sonar:sonar -Dsonar.host.url=http://127.0.0.1:9000/ -DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80'
+	       bat "echo ${params.EmailRecipient}"
+	       bat "echo ${params.region}"    
+               bat 'mvn clean package sonar:sonar -Dsonar.host.url=http://127.0.0.1:9000/ -DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80 -f CounterWebApp/pom.xml'
 		  //sh 'mvn clean package -DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80'
 		   	nexusArtifactUploader(
     			nexusVersion: 'nexus3',
@@ -34,7 +34,7 @@ pipeline {
     			artifacts: [
         		[artifactId: 'CounterWebApp',
          		classifier: '',
-         		file: 'target/CounterWebApp.war',
+         		file: 'CounterWebApp/target/CounterWebApp.war',
          		type: 'war']
     			]
  		)
