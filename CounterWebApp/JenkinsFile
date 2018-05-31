@@ -16,9 +16,9 @@ pipeline {
 
     tools {
 
-        maven 'Your Maven Name'
+        maven 'Maven'
 
-        jdk 'Your JDK Name'
+        jdk 'JDK'
 
     }
 
@@ -32,9 +32,9 @@ pipeline {
 
                                                                 git (
 
-                                                                                url: '<GitURL>',
+                                                                                url: 'https://github.com/SMTBDevOpsEngine/GITDemo.git',
 
-                                                                                credentialsId: '<UR>'
+                                                                                credentialsId: 'eb2e9c94-b0dd-4687-93e2-610d91a13dc9'
 
                                                                 )
 
