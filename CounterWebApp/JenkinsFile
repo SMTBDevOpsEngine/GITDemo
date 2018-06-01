@@ -32,7 +32,7 @@ pipeline {
             steps {
 	                 bat "echo ${params.EmailRecipient}"
 	                 bat "echo ${params.region}"
-			 bat "mvn -f CounterWebApp/pom.xml"
+			 bat "mvn -f CounterWebApp/pom.xml -DproxySet=true -DproxyHost=www-proxy.us.oracle.com -DproxyPort=80"
             }
         }
         stage ('Checkout1'){
