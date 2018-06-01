@@ -6,7 +6,7 @@ pipeline {
 
                parameters {
 
-        string(defaultValue: "", description: 'What environment?', name: 'Environment')
+        string(defaultValue: "manthan.n.dholakia@oracle.com", description: 'What environment?', name: 'EmailRecipient')
 
         // choices are newline separated
 
@@ -23,29 +23,24 @@ pipeline {
     }
 
     stages {
-
         stage ('Checkout'){
-
-            steps
-
-                                                {
-
-                                                                git (
-
-                                                                                url: 'https://github.com/SMTBDevOpsEngine/GITDemo.git',
-
-                                                                                credentialsId: 'eb2e9c94-b0dd-4687-93e2-610d91a13dc9'
-
-                                                                )
-
-                                                }
-
-                                               
-
+            steps {
+                 checkout scm
             }
-
-                               
-
+        }
+        stage ('Build'){
+            steps {
+	                 bat "echo ${params.EmailRecipient}"
+	                 bat "echo ${params.region}"
+            }
+        }
+        stage ('Checkout1'){
+            steps {
+                  git (
+                      url: 'https://github.com/SMTBDevOpsEngine/GITDemo.git',
+                      credentialsId: 'eb2e9c94-b0dd-4687-93e2-610d91a13dc9'
+                      )
+                  }
+            }
     }
-
 }
